@@ -26,5 +26,12 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	FGameplayAttributeData OxygenLevel;
 	ATTRIBUTE_ACCESSORS(UVitalAttributeSet, OxygenLevel)
+		
+	UPROPERTY(BlueprintReadOnly)
+	FGameplayAttributeData MaxOxygenLevel;
+	ATTRIBUTE_ACCESSORS(UVitalAttributeSet, MaxOxygenLevel)
+
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+	virtual void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
 	
 };
