@@ -23,6 +23,8 @@ UTP_WeaponComponent::UTP_WeaponComponent()
 
 void UTP_WeaponComponent::Fire()
 {
+	return;
+
 	if (Character == nullptr || Character->GetController() == nullptr)
 	{
 		return;
@@ -83,6 +85,7 @@ bool UTP_WeaponComponent::AttachWeapon(AFPProjectCharacter* TargetCharacter)
 	// add the weapon as an instance component to the character
 	Character->AddInstanceComponent(this);
 
+
 	// Set up action bindings
 	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
 	{
@@ -91,6 +94,8 @@ bool UTP_WeaponComponent::AttachWeapon(AFPProjectCharacter* TargetCharacter)
 			// Set the priority of the mapping to 1, so that it overrides the Jump action with the Fire action when using touch input
 			Subsystem->AddMappingContext(FireMappingContext, 1);
 		}
+		
+		return true;
 
 		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
 		{
